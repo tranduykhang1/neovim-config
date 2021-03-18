@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\LV-Source\lv-API'
+let g:netrw_dirhist_8='C:/Users/ASUS/OneDrive/Máy tính/helloWorld/LV-Source/lv-frontend/src'
+let g:netrw_dirhist_7='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\LV-Source\lv-frontend'
+let g:netrw_dirhist_6='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\C++'
+let g:netrw_dirhist_5='C:/Users/ASUS/OneDrive/Máy tính/helloWorld/angular/angular-training1/src'
+let g:netrw_dirhist_4='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\angular\angular-training1\src'
+let g:netrw_dirhist_3='C:/Users/ASUS/OneDrive/Máy tính/helloWorld/angular/angular-training1/src/app'
+let g:netrw_dirhist_2='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\angular\angular-training1\src\app'
+let g:netrw_dirhist_1='C:/Users/ASUS/OneDrive/Máy tính/helloWorld/Luận Văn'
+let g:netrw_dirhist_0='C:\Users\ASUS\OneDrive\Máy tính\helloWorld\Luận Văn'
