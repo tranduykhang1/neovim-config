@@ -4,7 +4,6 @@ set shiftwidth=3
 set noexpandtab
 set autoindent
 set timeoutlen=1000
-set timeoutlen=0
 set nobackup
 set relativenumber
 set number
@@ -26,7 +25,11 @@ Plug 'epilande/vim-react-snippets'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'sirver/ultisnips'
 Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install'  }
+Plug 'prettier/vim-prettier' 
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+Plug 'eslint/eslint'
 
 call plug#end()
 
@@ -47,14 +50,17 @@ let NERDTreeRespectWildIgnore=1
 
 "python
 
+"Auto import 
+let g:js_file_import_sort_after_insert = 1
+
+
 "ultisnip
 let g:UltiSnipsEditSplit="vertical"
 let g:airline_theme = 'gruvbox_material'
 
-
 "Theme
-colorscheme dracula 
-"let g:gruvbox_material_background = 'hard'
+colorscheme gruvbox-material
+let g:gruvbox_material_background = 'hard'
 
 "neoformat
 let g:neoformat_run_all_formatters = 1
@@ -63,15 +69,12 @@ let g:neoformat_run_all_formatters = 1
 "deo
 let g:deoplete#enable_at_startup = 1
 
-
-
-
 "emmet html
-let g:user_emmet_leader_key=','
+let g:user_emmet_leader_key = ','
+
 
 "Setting
 "snip
-
 "gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_map_keys = 0
@@ -86,12 +89,19 @@ noremap <C-f> :NERDTreeFocus<CR>
 noremap <C-d> :NERDTreeToggle<CR>
 
 "Pretty
+let g:prettier#quickfix_enabled = 0
+
 noremap <C-l> :Prettier<CR>
 
-"closetag
+"multi cursors
+let g:multi_cursor_use_default_mapping=0
 
-"Multi cursors
-let g:multi_cursor_use_default_mapping = 0 
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-x>'
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
