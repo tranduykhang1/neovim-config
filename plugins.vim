@@ -10,12 +10,19 @@ set number
 syntax enable
 set termguicolors
 set encoding=UTF-8
+set nowrap
 
 
 call plug#begin('~/AppData/Local/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
 Plug 'dracula/vim', {'name': 'dracula'}
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'airblade/vim-gitgutter'
@@ -23,11 +30,21 @@ Plug 'mattn/emmet-vim'
 Plug 'epilande/vim-es2015-snippets'
 Plug 'epilande/vim-react-snippets'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'sirver/ultisnips'
-Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
+
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'natebosch/dartlang-snippets'
+
+"Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
 Plug 'prettier/vim-prettier' 
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+"Git
+Plug 'vim-airline/vim-airline'
+
+Plug 'dart-lang/dart-vim-plugin'
+
 
 Plug 'eslint/eslint'
 
@@ -61,6 +78,9 @@ let g:airline_theme = 'gruvbox_material'
 "Theme
 colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
+
+"dart setting
+
 
 "neoformat
 let g:neoformat_run_all_formatters = 1
