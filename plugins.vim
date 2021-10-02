@@ -12,7 +12,7 @@ set termguicolors
 set encoding=UTF-8
 set nowrap
 
-
+	
 call plug#begin('~/AppData/Local/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
@@ -40,6 +40,9 @@ Plug 'prettier/vim-prettier'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
+"Floatterm
+Plug 'voldikss/vim-floaterm'
+
 "Git
 Plug 'vim-airline/vim-airline'
 
@@ -52,7 +55,7 @@ call plug#end()
 
 
 let g:python_host_prog = 'C:\Python27/python'
-let g:python3_host_prog = 'C:\Users\ASUS\AppData\Local\Programs\Python\Python39/python'
+let g:python3_host_prog = 'C:\Python39/python'
 
 "nvim icon file 
 
@@ -110,7 +113,8 @@ noremap <C-d> :NERDTreeToggle<CR>
 
 "Pretty
 let g:prettier#quickfix_enabled = 0
-
+let g:prettier#quickfix_enabled = 0
+autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
 noremap <C-l> :Prettier<CR>
 
 "multi cursors
@@ -125,3 +129,22 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+
+
+
+"Floatterm
+
+let g:floaterm_keymap_toggle = '<C-k>'
+let g:floaterm_keymap_next   = '<F2>'
+let g:floaterm_keymap_prev   = '<F3>'
+let g:floaterm_keymap_new    = '<F4>'
+
+let g:floaterm_gitcommit='Terminal'
+let g:floaterm_autoinsert=1
+let g:floaterm_width=0.8
+let g:floaterm_height=0.8
+let g:floaterm_wintitle=0
+let g:floaterm_autoclose=1
+
+
