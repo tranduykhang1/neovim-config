@@ -30,18 +30,17 @@ Plug 'dracula/vim', {'name': 'dracula'}
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-Plug 'epilande/vim-es2015-snippets'
-Plug 'epilande/vim-react-snippets'
+"Plug 'epilande/vim-es2015-snippets'
+"Plug 'epilande/vim-react-snippets'
 Plug 'terryma/vim-multiple-cursors'
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
 
-Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-Plug 'prettier/vim-prettier' 
+"Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+"Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 "Floatterm
 Plug 'voldikss/vim-floaterm'
@@ -344,3 +343,12 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+
+"Coc-snippet 
+"" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
