@@ -12,11 +12,10 @@ set termguicolors
 set encoding=UTF-8
 set nowrap
 set mouse+=a
-set tags=tags,./tags
 
 
 	
-call plug#begin('~/AppData/Local/nvim/autoload/plugged')
+call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 
@@ -26,7 +25,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
-Plug 'dracula/vim', {'name': 'dracula'}
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
@@ -37,6 +35,7 @@ Plug 'terryma/vim-multiple-cursors'
 "Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
+Plug 'dart-lang/dart-vim-plugin'
 
 "Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
 Plug 'ludovicchabant/vim-gutentags'
@@ -55,7 +54,10 @@ Plug 'ryanoasis/vim-devicons'
 "Git
 Plug 'vim-airline/vim-airline'
 
-Plug 'dart-lang/dart-vim-plugin'
+
+"Fzf
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 
 Plug 'eslint/eslint'
@@ -72,8 +74,8 @@ Plug 'prettier/vim-prettier', {
 call plug#end()
 
 
-let g:python_host_prog = 'C:\Python27/python'
-let g:python3_host_prog = 'C:\Python39/python'
+"let g:python_host_prog = 'C:\Python27/python'
+"let g:python3_host_prog = 'C:\Python39/python'
 
 "nvim icon file 
 
@@ -101,7 +103,7 @@ colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
 
 "dart setting
-
+let g:dart_format_on_save = 1
 
 "neoformat
 let g:neoformat_run_all_formatters = 1
@@ -135,6 +137,15 @@ let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
 noremap <C-l> :Prettier<CR>
 
+"Dart format
+noremap <C-j> :Format<CR>
+"Flutter coc-action config
+noremap <C-w> :CocAction<CR>
+
+"Fzf
+noremap <A-h> :FZF<CR>
+
+
 "multi cursors
 let g:multi_cursor_use_default_mapping=0
 
@@ -167,7 +178,7 @@ let g:floaterm_autoclose=1
 
 
 "Coc disabled
-nnoremap <c-c> :CocDisable<CR>
+nnoremap <c-c> :CocCommand<CR>
 
 "Bar
 " Move to previous/next

@@ -1,1 +1,1 @@
-source ~\AppData\Local\nvim\plugins.vim
+source ~/.config/nvim/plugins.vim
