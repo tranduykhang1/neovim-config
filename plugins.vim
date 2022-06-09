@@ -25,7 +25,12 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+"colorscheme
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'arcticicestudio/nord-vim'
+Plug 'APZelos/blamer.nvim'
+
+
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 "Plug 'epilande/vim-es2015-snippets'
@@ -97,8 +102,10 @@ let g:js_file_import_sort_after_insert = 1
 "ultisnip
 let g:UltiSnipsEditSplit="vertical"
 let g:airline_theme = 'gruvbox_material'
+"let g:airline_theme = 'nord'
 
 "Theme
+"colorscheme nord
 colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
 
@@ -363,3 +370,8 @@ let g:coc_snippet_next = '<c-j>'
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
 let g:coc_snippet_prev = '<c-k>'
+
+
+"Git lens
+let g:blamer_enabled = 1
+
