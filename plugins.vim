@@ -12,9 +12,11 @@ set termguicolors
 set encoding=UTF-8
 set nowrap
 set mouse+=a
+set updatetime=300
+set signcolumn=yes
+set cursorline
 
 
-	
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
@@ -57,23 +59,23 @@ Plug 'romgrk/barbar.nvim'
 Plug 'ryanoasis/vim-devicons'
 
 "Git
-Plug 'vim-airline/vim-airline'
+Plug 'xuyuanp/nerdtree-git-plugin'
 
+Plug 'vim-airline/vim-airline'
 
 "Fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 
+"Scroll
+Plug 'yuttie/comfortable-motion.vim'
+
 Plug 'eslint/eslint'
 
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'] }
-
-"For typescript
-
-
 
 
 call plug#end()
@@ -82,7 +84,8 @@ call plug#end()
 "let g:python_host_prog = 'C:\Python27/python'
 "let g:python3_host_prog = 'C:\Python39/python'
 
-"nvim icon file 
+
+
 
 "show file .git
 let NERDTreeShowHidden=1
@@ -108,6 +111,7 @@ let g:airline_theme = 'gruvbox_material'
 "colorscheme nord
 colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
+
 
 "dart setting
 let g:dart_format_on_save = 1
@@ -147,7 +151,7 @@ noremap <C-l> :Prettier<CR>
 "Dart format
 noremap <C-j> :Format<CR>
 "Flutter coc-action config
-noremap <C-w> :CocAction<CR>
+"noremap <C-w> :CocAction<CR>
 
 "Fzf
 noremap <A-h> :FZF<CR>
@@ -174,7 +178,7 @@ let g:multi_cursor_quit_key            = '<Esc>'
 let g:floaterm_keymap_toggle = '<C-k>'
 let g:floaterm_keymap_next   = '<F2>'
 let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F4>'
+let g:floaterm_keymap_new    = '<F1>'
 
 let g:floaterm_gitcommit='Terminal'
 let g:floaterm_autoinsert=1
@@ -183,6 +187,27 @@ let g:floaterm_height=0.8
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
 
+"Scroll
+let g:comfortable_motion_no_default_key_mappings = 1
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+nnoremap <silent> <S-s> :call comfortable_motion#flick(80)<CR>
+nnoremap <silent> <S-w> :call comfortable_motion#flick(-80)<CR>
+
+
+"Git vim
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'M',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'U',
+                \ 'Renamed'   :'R',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'D',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 "Coc disabled
 nnoremap <c-c> :CocCommand<CR>
@@ -215,24 +240,19 @@ nnoremap <silent>    <A-c> :BufferClose<CR>
 
 
 
-"
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
+" coc-config
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -243,11 +263,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -261,15 +276,13 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
@@ -317,12 +330,6 @@ omap ac <Plug>(coc-classobj-a)
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  "nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  "vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
@@ -331,7 +338,7 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Format :call CocActionAsync('format')
 
 " Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
@@ -362,6 +369,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+"
 
 
 "Coc-snippet 
@@ -378,3 +386,8 @@ let g:blamer_delay = 200
 let g:blamer_show_in_visual_modes = 0
 let g:blamer_show_in_insert_modes = 0
 
+
+""Transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" For Vim<8, replace EndOfBuffer by NonText
+autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
