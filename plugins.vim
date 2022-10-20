@@ -14,6 +14,7 @@ set nowrap
 set mouse+=a
 set updatetime=300
 set signcolumn=yes
+set cursorline
 
 
 call plug#begin('~/.config/nvim/autoload/plugged')
@@ -83,7 +84,8 @@ call plug#end()
 "let g:python_host_prog = 'C:\Python27/python'
 "let g:python3_host_prog = 'C:\Python39/python'
 
-"nvim icon file 
+
+
 
 "show file .git
 let NERDTreeShowHidden=1
@@ -109,6 +111,7 @@ let g:airline_theme = 'gruvbox_material'
 "colorscheme nord
 colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
+
 
 "dart setting
 let g:dart_format_on_save = 1
@@ -384,5 +387,7 @@ let g:blamer_show_in_visual_modes = 0
 let g:blamer_show_in_insert_modes = 0
 
 
-"Coc-fix 
-" Use <c-space> to trigger completion.
+""Transparent bg
+autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
+" For Vim<8, replace EndOfBuffer by NonText
+autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
