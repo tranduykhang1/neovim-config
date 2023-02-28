@@ -29,6 +29,11 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "colorscheme
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+
+
+"
 Plug 'arcticicestudio/nord-vim'
 Plug 'APZelos/blamer.nvim'
 
@@ -105,12 +110,14 @@ let g:js_file_import_sort_after_insert = 1
 "ultisnip
 let g:UltiSnipsEditSplit="vertical"
 let g:airline_theme = 'gruvbox_material'
+let g:lightline = {'colorscheme' : 'gruvbox_material'}
 "let g:airline_theme = 'nord'
 
 "Theme
 "colorscheme nord
-colorscheme gruvbox-material
-let g:gruvbox_material_background = 'hard'
+"colorscheme gruvbox-material
+"let g:gruvbox_material_background = 'hard'
+colorscheme dracula
 
 
 "dart setting
