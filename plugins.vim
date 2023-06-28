@@ -15,6 +15,7 @@ set mouse+=a
 set updatetime=300
 set signcolumn=yes
 set cursorline
+set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
 
 
 call plug#begin('~/.config/nvim/autoload/plugged')
@@ -29,6 +30,11 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "colorscheme
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
+Plug 'dracula/vim', { 'as': 'dracula' }
+
+
+
+"
 Plug 'arcticicestudio/nord-vim'
 Plug 'APZelos/blamer.nvim'
 
@@ -77,13 +83,17 @@ Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
       \ 'for': ['javascript', 'typescript', 'typescriptreact', 'javascriptreact'] }
 
+"Docker
+Plug 'kkvh/vim-docker-tools'
+
+"Nerdcommenter
+Plug 'scrooloose/nerdcommenter'
 
 call plug#end()
 
 
 "let g:python_host_prog = 'C:\Python27/python'
 "let g:python3_host_prog = 'C:\Python39/python'
-
 
 
 
@@ -101,16 +111,13 @@ let NERDTreeRespectWildIgnore=1
 "Auto import 
 let g:js_file_import_sort_after_insert = 1
 
-
-"ultisnip
-let g:UltiSnipsEditSplit="vertical"
-let g:airline_theme = 'gruvbox_material'
-"let g:airline_theme = 'nord'
-
 "Theme
-"colorscheme nord
+let g:UltiSnipsEditSplit="vertical"
+"let g:airline_theme = 'gruvbox_material'
+
 colorscheme gruvbox-material
 let g:gruvbox_material_background = 'hard'
+
 
 
 "dart setting
@@ -152,6 +159,9 @@ noremap <C-l> :Prettier<CR>
 noremap <C-j> :Format<CR>
 "Flutter coc-action config
 "noremap <C-w> :CocAction<CR>
+
+"Docker
+noremap <C-e> :DockerToolsToggle<CR>
 
 "Fzf
 noremap <A-h> :FZF<CR>
@@ -391,3 +401,35 @@ let g:blamer_show_in_insert_modes = 0
 autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 " For Vim<8, replace EndOfBuffer by NonText
 autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
+
+
+let mapleader=","
+
+"Nerdcommenter
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
