@@ -31,10 +31,9 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 "colorscheme
 Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'talha-akram/noctis.nvim'
 
-
-
-"
+"kkkk
 Plug 'arcticicestudio/nord-vim'
 Plug 'APZelos/blamer.nvim'
 
@@ -89,6 +88,10 @@ Plug 'kkvh/vim-docker-tools'
 "Nerdcommenter
 Plug 'scrooloose/nerdcommenter'
 
+"Ale prettier
+Plug 'dense-analysis/ale'
+
+
 call plug#end()
 
 
@@ -115,8 +118,12 @@ let g:js_file_import_sort_after_insert = 1
 let g:UltiSnipsEditSplit="vertical"
 "let g:airline_theme = 'gruvbox_material'
 
-colorscheme gruvbox-material
-let g:gruvbox_material_background = 'hard'
+"colorscheme gruvbox-material
+"let g:gruvbox_material_background = 'hard'
+
+"colorscheme noctis_minimus
+colorscheme noctis_azureus
+
 
 
 
@@ -432,4 +439,14 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
+
+
+" Ale config
+
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\}
 
