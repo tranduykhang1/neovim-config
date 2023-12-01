@@ -1,5 +1,5 @@
-set tabstop=3
-set softtabstop=3
+set tabstop=2
+set softtabstop=2
 set shiftwidth=3
 set noexpandtab
 set autoindent
@@ -22,9 +22,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 
+"Git blame
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
@@ -33,8 +33,7 @@ Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'talha-akram/noctis.nvim'
 
-"kkkk
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim' 
 Plug 'APZelos/blamer.nvim'
 
 
@@ -66,7 +65,9 @@ Plug 'ryanoasis/vim-devicons'
 "Git
 Plug 'xuyuanp/nerdtree-git-plugin'
 
+"airline
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 "Fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -75,8 +76,6 @@ Plug 'junegunn/fzf.vim'
 
 "Scroll
 Plug 'yuttie/comfortable-motion.vim'
-
-Plug 'eslint/eslint'
 
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
@@ -116,16 +115,19 @@ let g:js_file_import_sort_after_insert = 1
 
 "Theme
 let g:UltiSnipsEditSplit="vertical"
-"let g:airline_theme = 'gruvbox_material'
 
 "colorscheme gruvbox-material
 "let g:gruvbox_material_background = 'hard'
 
 "colorscheme noctis_minimus
 colorscheme noctis_azureus
+let g:airline_theme = 'nord_minimal'
 
 
-
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 "dart setting
 let g:dart_format_on_save = 1
