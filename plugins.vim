@@ -29,9 +29,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "colorscheme
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'talha-akram/noctis.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
+
 
 Plug 'arcticicestudio/nord-vim' 
 Plug 'APZelos/blamer.nvim'
@@ -122,10 +123,12 @@ let g:UltiSnipsEditSplit="vertical"
 
 "colorscheme gruvbox-material
 "let g:gruvbox_material_background = 'hard'
+set background=dark 
+colorscheme gruvbox
 
 "colorscheme noctis_minimus
-colorscheme noctis_azureus
-let g:airline_theme = 'nord_minimal'
+"colorscheme noctis_azureus
+let g:airline_theme = 'base16_gruvbox_hard'
 
 
 let g:airline_left_sep = ''
