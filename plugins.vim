@@ -94,6 +94,10 @@ Plug 'scrooloose/nerdcommenter'
 "Ale prettier
 Plug 'dense-analysis/ale'
 
+
+Plugin 'yggdroot/indentline'
+
+
 call plug#end()
 
 
