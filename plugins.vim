@@ -17,7 +17,6 @@ set signcolumn=yes
 set cursorline
 set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
 
-
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
@@ -95,7 +94,6 @@ Plug 'scrooloose/nerdcommenter'
 "Ale prettier
 Plug 'dense-analysis/ale'
 
-
 call plug#end()
 
 
@@ -124,11 +122,10 @@ let g:UltiSnipsEditSplit="vertical"
 "colorscheme gruvbox-material
 "let g:gruvbox_material_background = 'hard'
 set background=dark 
-colorscheme gruvbox
+"colorscheme gruvbox
 
-"colorscheme noctis_minimus
-"colorscheme noctis_azureus
-"let g:airline_theme = 'base16_gruvbox_hard'
+colorscheme noctis_minimus
+let g:airline_theme = 'dracula'
 
 
 let g:airline_left_sep = ''
@@ -162,7 +159,7 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 
-noremap <C-f> :NERDTreeFocus<CR>
+noremap <C-f> :NERDTreeFind<CR>
 noremap <silent> <C-d> :NERDTreeToggle<CR>
 
 "Pretty
