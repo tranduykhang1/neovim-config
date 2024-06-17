@@ -16,6 +16,9 @@ set updatetime=300
 set signcolumn=yes
 set cursorline
 set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
+set clipboard+=unnamed
+
+
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
@@ -31,6 +34,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'talha-akram/noctis.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 
 Plug 'arcticicestudio/nord-vim' 
@@ -41,9 +45,11 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 "Plug 'epilande/vim-es2015-snippets'
 "Plug 'epilande/vim-react-snippets'
+"Plug 'SirVer/ultisnips'
+Plug 'mlaursen/vim-react-snippets'
+
 Plug 'terryma/vim-multiple-cursors'
 
-"Plug 'SirVer/ultisnips'
 "Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
 Plug 'dart-lang/dart-vim-plugin'
@@ -95,15 +101,19 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'dense-analysis/ale'
 
 
-Plugin 'yggdroot/indentline'
+Plug 'yggdroot/indentline'
 
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
+"AI
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 call plug#end()
 
 
 "let g:python_host_prog = 'C:\Python27/python'
 "let g:python3_host_prog = 'C:\Python39/python'
-
 
 
 "show file .git
@@ -128,8 +138,10 @@ let g:UltiSnipsEditSplit="vertical"
 set background=dark 
 "colorscheme gruvbox
 
-colorscheme noctis_minimus
-let g:airline_theme = 'dracula'
+"colorscheme noctis_minimus
+colorscheme catppuccin-macchiato
+let g:airline_theme = 'catppuccin'
+"let g:airline_theme = 'base16_gruvbox_dark_hard'
 
 
 let g:airline_left_sep = ''
