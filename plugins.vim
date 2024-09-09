@@ -35,6 +35,9 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'talha-akram/noctis.nvim'
 Plug 'ellisonleao/gruvbox.nvim'
 Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'navarasu/onedark.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'alligator/accent.vim'
 
 
 Plug 'arcticicestudio/nord-vim' 
@@ -134,14 +137,18 @@ let g:js_file_import_sort_after_insert = 1
 let g:UltiSnipsEditSplit="vertical"
 
 "colorscheme gruvbox-material
-"let g:gruvbox_material_background = 'hard'
-set background=dark 
+"let g:gruvbox_material_background = 'hard' 
 "colorscheme gruvbox
+"colorscheme kanagawa
+let g:accent_colour = 'blue'
+colorscheme accent
+let g:airline_theme = 'catppuccin'
 
 "colorscheme noctis_minimus
-colorscheme catppuccin-macchiato
-let g:airline_theme = 'catppuccin'
+"colorscheme catppuccin-macchiato
+"let g:airline_theme = 'catppuccin'
 "let g:airline_theme = 'base16_gruvbox_dark_hard'
+"colorscheme gruvbox
 
 
 let g:airline_left_sep = ''
