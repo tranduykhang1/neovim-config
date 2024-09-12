@@ -51,7 +51,7 @@ Plug 'mattn/emmet-vim'
 "Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 
 "Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
@@ -60,6 +60,10 @@ Plug 'dart-lang/dart-vim-plugin'
 "Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
 "Plug 'ludovicchabant/vim-gutentags'
 "Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+"Multi cursor
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 
 "Floatterm
 Plug 'voldikss/vim-floaterm'
@@ -112,6 +116,13 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 "AI
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
+Plug 'jbyuki/quickmath.nvim'
+
+"Telescope for live grep
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+
 call plug#end()
 
 
@@ -140,9 +151,10 @@ let g:UltiSnipsEditSplit="vertical"
 "let g:gruvbox_material_background = 'hard' 
 "colorscheme gruvbox
 "colorscheme kanagawa
-let g:accent_colour = 'blue'
+let g:accent_colour = 'green'
 colorscheme accent
-let g:airline_theme = 'catppuccin'
+"let g:airline_theme = 'catppuccin'
+let g:airline_theme = 'base16_classic_dark'
 
 "colorscheme noctis_minimus
 "colorscheme catppuccin-macchiato
@@ -204,17 +216,17 @@ noremap <C-h> :FZF<CR>
 
 
 "multi cursors
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" let g:multi_cursor_use_default_mapping=0
+"
+"Default mapping
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_select_all_word_key = '<A-n>'
+" let g:multi_cursor_start_key           = 'g<C-n>'
+" let g:multi_cursor_select_all_key      = 'g<A-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 
 
@@ -474,5 +486,11 @@ let g:ale_fixers = {
 \}
 
 
+
+"Telescope map
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 let NERDTreeHighlightCursorline = 0
