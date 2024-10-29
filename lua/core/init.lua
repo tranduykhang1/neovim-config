@@ -17,10 +17,11 @@ opt.cursorline = true
 
 -- Indenting
 opt.expandtab = true
-opt.shiftwidth = 2
+opt.shiftwidth = 4
 opt.smartindent = true
 opt.tabstop = 2
 opt.softtabstop = 2
+  
 
 opt.fillchars = { eob = " " }
 opt.ignorecase = true
@@ -63,6 +64,21 @@ vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin" .. (is_windows and ";" or "
 
 -------------------------------------- autocmds ------------------------------------------
 local autocmd = vim.api.nvim_create_autocmd
+
+-- Set Neovim transparency
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    vim.cmd([[
+      highlight Normal guibg=NONE ctermbg=NONE
+      highlight NonText guibg=NONE ctermbg=NONE
+      highlight LineNr guibg=NONE ctermbg=NONE
+      highlight Folded guibg=NONE ctermbg=NONE
+      highlight EndOfBuffer guibg=NONE ctermbg=NONE
+      highlight NvimTreeNormal guibg=NONE ctermbg=NONE
+      highlight NvimTreeEndOfBuffer guibg=NONE ctermbg=NONE
+    ]])
+  end
+})
 
 -- dont list quickfix buffers
 autocmd("FileType", {

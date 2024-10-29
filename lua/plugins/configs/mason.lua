@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "lua-language-server", "typescript-language-server", "eslint-lsp" },
+  ensure_installed = { "lua-language-server", "typescript-language-server", "eslint-lsp", "ts_ls" },
 
   PATH = "skip",
 
