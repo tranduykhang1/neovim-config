@@ -27,6 +27,7 @@ Plug 'jiangmiao/auto-pairs'
 "Git blame
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+"File explorer
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
@@ -38,22 +39,17 @@ Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 Plug 'navarasu/onedark.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'alligator/accent.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 
 Plug 'arcticicestudio/nord-vim' 
 Plug 'APZelos/blamer.nvim'
 
-
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-"Plug 'epilande/vim-es2015-snippets'
-"Plug 'epilande/vim-react-snippets'
-"Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
-"Plug 'terryma/vim-multiple-cursors'
 
-"Plug 'honza/vim-snippets'
 Plug 'natebosch/dartlang-snippets'
 Plug 'dart-lang/dart-vim-plugin'
 
@@ -85,10 +81,9 @@ Plug 'vim-airline/vim-airline-themes'
 "Git
 Plug 'tpope/vim-fugitive'
 
-
 "Fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 
 
 "Scroll
@@ -110,7 +105,6 @@ Plug 'dense-analysis/ale'
 
 Plug 'yggdroot/indentline'
 
-
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
 "AI
@@ -123,17 +117,15 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
+
 call plug#end()
 
 
-"let g:python_host_prog = 'C:\Python27/python'
-"let g:python3_host_prog = 'C:\Python39/python'
-
+let mapleader=" "
 
 "show file .git
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$']
-
 
 ""hidden file .pyc
 set wildignore+=*.pyc
@@ -144,15 +136,18 @@ let NERDTreeRespectWildIgnore=1
 "Auto import 
 let g:js_file_import_sort_after_insert = 1
 
-"Theme
-let g:UltiSnipsEditSplit="vertical"
 
 "colorscheme gruvbox-material
 "let g:gruvbox_material_background = 'hard' 
+"
 "colorscheme gruvbox
-"colorscheme kanagawa
-let g:accent_colour = 'green'
-colorscheme accent
+"
+colorscheme kanagawa
+"colorscheme accent
+"let g:accent_colour = 'yellow'
+
+"colorscheme material
+
 "let g:airline_theme = 'catppuccin'
 let g:airline_theme = 'base16_classic_dark'
 
@@ -174,7 +169,6 @@ let g:dart_format_on_save = 1
 "neoformat
 let g:neoformat_run_all_formatters = 1
 
-
 "deo
 let g:deoplete#enable_at_startup = 1
 
@@ -194,17 +188,22 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 
-noremap <C-f> :NERDTreeFind<CR>
-noremap <silent> <C-d> :NERDTreeToggle<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+
+nnoremap <silent> <leader>f :NERDTreeFind<CR>
+
+
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>
+
 
 "Pretty
-let g:prettier#quickfix_enabled = 0
+et g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
-noremap <C-l> :Prettier<CR>
+noremap <leader>fl :Prettier<CR>
 
 "Dart format
-noremap <C-j> :Format<CR>
+noremap <leader>fm :Format<CR>
 "Flutter coc-action config
 "noremap <C-w> :CocAction<CR>
 
@@ -212,7 +211,7 @@ noremap <C-j> :Format<CR>
 noremap <C-e> :DockerToolsToggle<CR>
 
 "Fzf
-noremap <C-h> :FZF<CR>
+"noremap <C-h> :FZF<CR>
 
 
 "multi cursors
@@ -233,10 +232,10 @@ noremap <C-h> :FZF<CR>
 
 "Floatterm
 
-let g:floaterm_keymap_toggle = '<C-k>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F1>'
+let g:floaterm_keymap_toggle = '<leader>k'
+let g:floaterm_keymap_next   = '<leader>2'
+let g:floaterm_keymap_prev   = '<leader>1'
+let g:floaterm_keymap_new    = '<leader>tn'
 
 let g:floaterm_gitcommit='Terminal'
 let g:floaterm_autoinsert=1
@@ -274,9 +273,6 @@ nnoremap <c-c> :CocCommand<CR>
 " Move to previous/next
 nnoremap <silent>    <space>h :BufferPrevious<CR>
 nnoremap <silent>    <space>l :BufferNext<CR>
-" Re-order to previous/next
-nnoremap <silent>    <c-<> :BufferMovePrevious<CR>
-nnoremap <silent>    <c->> :BufferMoveNext<CR>
 " Goto buffer in position...
 nnoremap <silent>    <space>1 :BufferGoto 1<CR>
 nnoremap <silent>    <space>2 :BufferGoto 2<CR>
@@ -445,7 +441,7 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 
-let mapleader=","
+
 
 "Nerdcommenter
 " Create default mappings
