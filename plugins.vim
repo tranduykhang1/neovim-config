@@ -189,15 +189,14 @@ let NERDTreeDirArrows = 1
 
 
 nnoremap <leader>d :NERDTreeToggle<CR>
-
-nnoremap <silent> <leader>f :NERDTreeFind<CR>
+nnoremap <leader>df :NERDTreeFind<CR>
 
 
 "nnoremap <leader>ff <cmd>Telescope find_files<cr>
 
 
 "Pretty
-et g:prettier#quickfix_enabled = 0
+let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
 noremap <leader>fl :Prettier<CR>
@@ -490,3 +489,10 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 let NERDTreeHighlightCursorline = 0
+
+
+
+
+"Remap
+nnoremap <leader>sh <cmd>split<cr>
+nnoremap <leader>sv <cmd>vsplit<cr>
