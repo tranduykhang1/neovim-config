@@ -1,5 +1,5 @@
-set tabstop=3
-set softtabstop=3
+set tabstop=2
+set softtabstop=2
 set shiftwidth=3
 set noexpandtab
 set autoindent
@@ -16,43 +16,50 @@ set updatetime=300
 set signcolumn=yes
 set cursorline
 set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
+set clipboard+=unnamed
+
 
 
 call plug#begin('~/.config/nvim/autoload/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jiangmiao/auto-pairs'
 
+"Git blame
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+"File explorer
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "colorscheme
-Plug 'gruvbox-material/vim', {'as': 'gruvbox-material'}
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'talha-akram/noctis.nvim'
+Plug 'ellisonleao/gruvbox.nvim'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
+Plug 'navarasu/onedark.nvim'
+Plug 'rebelot/kanagawa.nvim'
+Plug 'alligator/accent.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 
-
-"
-Plug 'arcticicestudio/nord-vim'
+Plug 'arcticicestudio/nord-vim' 
 Plug 'APZelos/blamer.nvim'
-
 
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
-"Plug 'epilande/vim-es2015-snippets'
-"Plug 'epilande/vim-react-snippets'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'mlaursen/vim-react-snippets'
 
-"Plug 'SirVer/ultisnips'
-"Plug 'honza/vim-snippets'
+
 Plug 'natebosch/dartlang-snippets'
 Plug 'dart-lang/dart-vim-plugin'
 
 "Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-Plug 'ludovicchabant/vim-gutentags'
+"Plug 'ludovicchabant/vim-gutentags'
 "Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
+
+"Multi cursor
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 
 "Floatterm
 Plug 'voldikss/vim-floaterm'
@@ -67,17 +74,20 @@ Plug 'ryanoasis/vim-devicons'
 "Git
 Plug 'xuyuanp/nerdtree-git-plugin'
 
+"airline
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"Git
+Plug 'tpope/vim-fugitive'
 
 "Fzf
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 
 
 "Scroll
 Plug 'yuttie/comfortable-motion.vim'
-
-Plug 'eslint/eslint'
 
 Plug 'prettier/vim-prettier', {
       \ 'do': 'yarn install',
@@ -89,18 +99,32 @@ Plug 'kkvh/vim-docker-tools'
 "Nerdcommenter
 Plug 'scrooloose/nerdcommenter'
 
+"Ale prettier
+Plug 'dense-analysis/ale'
+
+
+Plug 'yggdroot/indentline'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+
+"AI
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+
+Plug 'jbyuki/quickmath.nvim'
+
+"Telescope for live grep
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
+
 call plug#end()
 
 
-"let g:python_host_prog = 'C:\Python27/python'
-"let g:python3_host_prog = 'C:\Python39/python'
-
-
+let mapleader=" "
 
 "show file .git
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.git$']
-
 
 ""hidden file .pyc
 set wildignore+=*.pyc
@@ -111,21 +135,38 @@ let NERDTreeRespectWildIgnore=1
 "Auto import 
 let g:js_file_import_sort_after_insert = 1
 
-"Theme
-let g:UltiSnipsEditSplit="vertical"
-"let g:airline_theme = 'gruvbox_material'
 
-colorscheme gruvbox-material
-let g:gruvbox_material_background = 'hard'
+"colorscheme gruvbox-material
+"let g:gruvbox_material_background = 'hard' 
+"
+"colorscheme gruvbox
+"
+colorscheme kanagawa
+"colorscheme accent
+"let g:accent_colour = 'yellow'
+
+"colorscheme material
+
+"let g:airline_theme = 'catppuccin'
+let g:airline_theme = 'base16_classic_dark'
+
+"colorscheme noctis_minimus
+"colorscheme catppuccin-macchiato
+"let g:airline_theme = 'catppuccin'
+"let g:airline_theme = 'base16_gruvbox_dark_hard'
+"colorscheme gruvbox
 
 
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
 
 "dart setting
 let g:dart_format_on_save = 1
 
 "neoformat
 let g:neoformat_run_all_formatters = 1
-
 
 "deo
 let g:deoplete#enable_at_startup = 1
@@ -146,17 +187,21 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 
-noremap <C-f> :NERDTreeFocus<CR>
-noremap <silent> <C-d> :NERDTreeToggle<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
+nnoremap <leader>df :NERDTreeFind<CR>
+
+
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>
+
 
 "Pretty
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
-noremap <C-l> :Prettier<CR>
+noremap <leader>fp :Prettier<CR>
 
 "Dart format
-noremap <C-j> :Format<CR>
+noremap <leader>fm :Format<CR>
 "Flutter coc-action config
 "noremap <C-w> :CocAction<CR>
 
@@ -164,31 +209,31 @@ noremap <C-j> :Format<CR>
 noremap <C-e> :DockerToolsToggle<CR>
 
 "Fzf
-noremap <A-h> :FZF<CR>
+"noremap <C-h> :FZF<CR>
 
 
 "multi cursors
-let g:multi_cursor_use_default_mapping=0
-
-" Default mapping
-let g:multi_cursor_start_word_key      = '<C-n>'
-let g:multi_cursor_select_all_word_key = '<A-n>'
-let g:multi_cursor_start_key           = 'g<C-n>'
-let g:multi_cursor_select_all_key      = 'g<A-n>'
-let g:multi_cursor_next_key            = '<C-n>'
-let g:multi_cursor_prev_key            = '<C-p>'
-let g:multi_cursor_skip_key            = '<C-x>'
-let g:multi_cursor_quit_key            = '<Esc>'
+" let g:multi_cursor_use_default_mapping=0
+"
+"Default mapping
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_select_all_word_key = '<A-n>'
+" let g:multi_cursor_start_key           = 'g<C-n>'
+" let g:multi_cursor_select_all_key      = 'g<A-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 
 
 
 "Floatterm
 
-let g:floaterm_keymap_toggle = '<C-k>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F1>'
+let g:floaterm_keymap_toggle = '<leader>k'
+let g:floaterm_keymap_next   = '<leader>2'
+let g:floaterm_keymap_prev   = '<leader>1'
+let g:floaterm_keymap_new    = '<leader>tn'
 
 let g:floaterm_gitcommit='Terminal'
 let g:floaterm_autoinsert=1
@@ -224,28 +269,19 @@ nnoremap <c-c> :CocCommand<CR>
 
 "Bar
 " Move to previous/next
-nnoremap <silent>    <A-,> :BufferPrevious<CR>
-nnoremap <silent>    <A-.> :BufferNext<CR>
-" Re-order to previous/next
-nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
-nnoremap <silent>    <A->> :BufferMoveNext<CR>
+nnoremap <silent>    <space>h :BufferPrevious<CR>
+nnoremap <silent>    <space>l :BufferNext<CR>
 " Goto buffer in position...
-nnoremap <silent>    <A-1> :BufferGoto 1<CR>
-nnoremap <silent>    <A-2> :BufferGoto 2<CR>
-nnoremap <silent>    <A-3> :BufferGoto 3<CR>
-nnoremap <silent>    <A-4> :BufferGoto 4<CR>
-nnoremap <silent>    <A-5> :BufferGoto 5<CR>
-nnoremap <silent>    <A-6> :BufferGoto 6<CR>
-nnoremap <silent>    <A-7> :BufferGoto 7<CR>
-nnoremap <silent>    <A-8> :BufferGoto 8<CR>
-nnoremap <silent>    <A-9> :BufferLast<CR>
+nnoremap <silent>    <space>1 :BufferGoto 1<CR>
+nnoremap <silent>    <space>2 :BufferGoto 2<CR>
+nnoremap <silent>    <space>3 :BufferGoto 3<CR>
+nnoremap <silent>    <space>4 :BufferGoto 4<CR>
+nnoremap <silent>    <space>5 :BufferGoto 5<CR>
+nnoremap <silent>    <space>6 :BufferGoto 6<CR>
 " Pin/unpin buffer
-nnoremap <silent>    <A-p> :BufferPin<CR>
+nnoremap <silent>    <c-p> :BufferPin<CR>
 " Close buffer
-nnoremap <silent>    <A-c> :BufferClose<CR>
-
-
-
+nnoremap <silent>    <space>w :BufferClose<CR>
 
 
 
@@ -313,7 +349,7 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
+,
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
 xmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -403,7 +439,7 @@ autocmd vimenter * hi Normal guibg=NONE ctermbg=NONE
 autocmd vimenter * hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 
-let mapleader=","
+
 
 "Nerdcommenter
 " Create default mappings
@@ -433,3 +469,27 @@ let g:NERDTrimTrailingWhitespace = 1
 " Enable NERDCommenterToggle to check all selected lines is commented or not 
 let g:NERDToggleCheckAllLines = 1
 
+
+" Ale config
+
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'typescriptreact': ['eslint'],
+\}
+
+
+
+"Telescope map
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+let NERDTreeHighlightCursorline = 0
+
+
+"Remap
+nnoremap <leader>sh <cmd>split<cr>
+nnoremap <leader>sv <cmd>vsplit<cr>

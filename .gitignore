@@ -1,1 +1,2 @@
-/plugged
+autoload/plugged/
+Session.vim
