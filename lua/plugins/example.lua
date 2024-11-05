@@ -114,6 +114,9 @@ return {
         "gitignore",
         "sql",
       },
+      intent = {
+        enabled = false,
+      },
     },
   },
 

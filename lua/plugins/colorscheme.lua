@@ -1,15 +1,4 @@
 return {
-  -- add gruvbox
-  {
-    "ellison/gruvbox.nvim",
-    opt = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        float = "transparent",
-      },
-    },
-  },
   {
     "folke/tokyonight.nvim",
     lazy = true,
