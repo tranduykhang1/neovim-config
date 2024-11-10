@@ -1,13 +1,22 @@
 {
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": ["go.mod"],
-      "trace.server": "verbose",
-      "filetypes": ["go"]
-    }
-  },
-  "snippets.ultisnips.pythonPrompt": false
-  "prettier.tabWidth": 4
-
+    "languageserver": {
+        "go": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "trace.server": "verbose",
+            "filetypes": ["go"]
+        }
+    },
+    "snippets.ultisnips.pythonPrompt": false,
+    "prettier.tabWidth": 2
 }
+
+coc-tsserver
+coc-spell-checker
+coc-prettier
+coc-json
+coc-eslint
+coc-css
+coc-html
+coc-tslint-plugin
+

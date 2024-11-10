@@ -32,14 +32,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 "colorscheme
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'talha-akram/noctis.nvim'
-Plug 'ellisonleao/gruvbox.nvim'
-Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
-Plug 'navarasu/onedark.nvim'
 Plug 'rebelot/kanagawa.nvim'
 Plug 'alligator/accent.vim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 
 Plug 'arcticicestudio/nord-vim' 
@@ -48,14 +42,6 @@ Plug 'APZelos/blamer.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/emmet-vim'
 Plug 'mlaursen/vim-react-snippets'
-
-
-Plug 'natebosch/dartlang-snippets'
-Plug 'dart-lang/dart-vim-plugin'
-
-"Plug 'Shougo/deoplete.nvim', {'do': 'UpdateRemotePlugins'}
-"Plug 'ludovicchabant/vim-gutentags'
-"Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 
 "Multi cursor
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -69,7 +55,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
 "Nvim files icon
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 
 "Git
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -80,10 +66,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 "Git
 Plug 'tpope/vim-fugitive'
-
-"Fzf
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
 
 
 "Scroll
@@ -109,8 +91,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' 
 
 "AI
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
-
-Plug 'jbyuki/quickmath.nvim'
 
 "Telescope for live grep
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -188,7 +168,7 @@ let NERDTreeDirArrows = 1
 
 
 nnoremap <leader>d :NERDTreeToggle<CR>
-nnoremap <leader>df :NERDTreeFind<CR>
+nnoremap <leader>fe :NERDTreeFind<CR>
 
 
 "nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -198,7 +178,7 @@ nnoremap <leader>df :NERDTreeFind<CR>
 let g:prettier#quickfix_enabled = 0
 let g:prettier#quickfix_enabled = 0
 autocmd TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.svelte,*.yaml,*.html
-noremap <leader>fp :Prettier<CR>
+noremap <leader>ft :Prettier<CR>
 
 "Dart format
 noremap <leader>fm :Format<CR>
@@ -233,7 +213,7 @@ noremap <C-e> :DockerToolsToggle<CR>
 let g:floaterm_keymap_toggle = '<leader>k'
 let g:floaterm_keymap_next   = '<leader>2'
 let g:floaterm_keymap_prev   = '<leader>1'
-let g:floaterm_keymap_new    = '<leader>tn'
+let g:floaterm_keymap_new    = '<leader>fn'
 
 let g:floaterm_gitcommit='Terminal'
 let g:floaterm_autoinsert=1
@@ -269,8 +249,8 @@ nnoremap <c-c> :CocCommand<CR>
 
 "Bar
 " Move to previous/next
-nnoremap <silent>    <space>h :BufferPrevious<CR>
-nnoremap <silent>    <space>l :BufferNext<CR>
+nnoremap <silent>    <leader>h :BufferPrevious<CR>
+nnoremap <silent>    <leader>l :BufferNext<CR>
 " Goto buffer in position...
 nnoremap <silent>    <space>1 :BufferGoto 1<CR>
 nnoremap <silent>    <space>2 :BufferGoto 2<CR>
