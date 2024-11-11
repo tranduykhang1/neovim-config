@@ -97,6 +97,11 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
+"Highlight css
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+
+
+
 call plug#end()
 
 
@@ -475,3 +480,8 @@ let NERDTreeHighlightCursorline = 0
 "Remap
 nnoremap <leader>sh <cmd>split<cr>
 nnoremap <leader>sv <cmd>vsplit<cr>
+
+
+"
+let g:Hexokinase_highlighters = [ 'backgroundfull' ]
+
