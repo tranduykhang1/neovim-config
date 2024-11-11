@@ -55,7 +55,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 
 "Nvim files icon
-"Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 "Git
 Plug 'xuyuanp/nerdtree-git-plugin'
@@ -109,6 +109,7 @@ let NERDTreeIgnore=['\.git$']
 ""hidden file .pyc
 set wildignore+=*.pyc
 let NERDTreeRespectWildIgnore=1
+let NERDTreeHighlightCursorline=0
 
 "python
 
@@ -169,6 +170,7 @@ let NERDTreeDirArrows = 1
 
 nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>fe :NERDTreeFind<CR>
+nnoremap <leader>fd :NERDTreeFocus<CR>
 
 
 "nnoremap <leader>ff <cmd>Telescope find_files<cr>
