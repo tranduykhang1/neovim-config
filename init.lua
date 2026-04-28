@@ -17,3 +17,15 @@ end
 
 require "lazy_setup"
 require "polish"
+
+local dap = require "dap"
+local dapgo = require "dap-go"
+
+-- 1. Setup nvim-dap-go with default settings
+dapgo.setup()
+
+-- 2. Optional: Setup UI
+local dapui = require "dapui"
+dapui.setup()
+dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
